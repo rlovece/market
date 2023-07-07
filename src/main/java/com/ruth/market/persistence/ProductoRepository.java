@@ -5,6 +5,8 @@ import com.ruth.market.domain.repository.ProductRepository;
 import com.ruth.market.persistence.crud.ProductoCrudRepository;
 import com.ruth.market.persistence.entity.Producto;
 import com.ruth.market.persistence.entity.mapper.ProdutMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,8 +16,12 @@ import java.util.Optional;
               /// tb podría usar @Component para indicar que es un componente , pero @Repository es más especifico
 public class ProductoRepository implements ProductRepository {
 
+    @Autowired /// sede el control y la creacion de instancia a sring, OJO: esto solo lo puedo hacer con
+                    // componentes de spring.
     private ProductoCrudRepository productoCrudRepository;
-    ProdutMapper produtMapper;
+
+    @Autowired
+    private ProdutMapper mapper;
 
     /**
      * <h2>Listar productos</h2>
@@ -27,7 +33,7 @@ public class ProductoRepository implements ProductRepository {
     public List<Product> getAll(){
         List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
                                         ///lo debe castear para obtener la lista
-        return produtMapper.toProducts(productos);
+        return mapper.toProducts(productos);
     }
 
 
@@ -41,7 +47,7 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Optional<List<Product>> getByCategory(int categoryId) {
         List<Producto> productos = (List<Producto>) productoCrudRepository.findByIdCategoria(categoryId);
-        return Optional.of(produtMapper.toProducts(productos));
+        return Optional.of(mapper.toProducts(productos));
     }
 
     /**
@@ -53,7 +59,7 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Optional<List<Product>> getScarseProducts(int quantity) {
         Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndAndEstado(quantity, true);
-        return productos.map(producto -> produtMapper.toProducts(producto));
+        return productos.map(producto -> mapper.toProducts(producto));
                     /// mapea cada producto en Optional
     }
 
@@ -66,7 +72,7 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Optional<Product> getProduct(int productId) {
         Optional<Producto> producto = productoCrudRepository.findById(productId);
-        return producto.map(producto1 -> produtMapper.toProduct(producto1));
+        return producto.map(producto1 -> mapper.toProduct(producto1));
     }
 
 
@@ -78,8 +84,8 @@ public class ProductoRepository implements ProductRepository {
      */
     @Override
     public Product save(Product product) {
-        Producto producto = produtMapper.toProducto(product);
-        return produtMapper.toProduct(productoCrudRepository.save(producto));
+        Producto producto = mapper.toProducto(product);
+        return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
     /**

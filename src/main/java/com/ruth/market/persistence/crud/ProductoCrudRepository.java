@@ -19,13 +19,6 @@ public interface ProductoCrudRepository extends CrudRepository<Producto, Integer
 
 
     /**
-     * <h2>Filtro por categoría ordenado</h2>
-     *
-     * return lista de productos por categoria ordenado por nombre.
-     */
-    List<Producto> findByIdCategoriaOOrderByNombre(int idCategoria);
-
-    /**
      * <h2>Filtro por cantidad stock menor que y estado</h2>
      *
      */

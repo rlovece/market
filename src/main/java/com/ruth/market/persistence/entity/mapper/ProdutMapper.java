@@ -6,8 +6,10 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 @Mapper(componentModel = "spring", uses = {CategoryMapper.class})
                         /// agrego el uses pq dentro de Producto tengo una categoria que tb debe ser convertida
