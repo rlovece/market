@@ -8,7 +8,7 @@ public class ComprasProducto {
 
     ///region Atributos
     @EmbeddedId /// se utiliza cuando la clave primaria es compuesta y está dada por otra clase
-    private ComprasProductosPK id;
+    private ComprasProductoPK id;
 
     private Integer cantidad;
 
@@ -17,6 +17,7 @@ public class ComprasProducto {
     private Boolean estado;
 
     @ManyToOne
+    @MapsId ("idCompra")
     @JoinColumn (name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
 
@@ -28,11 +29,11 @@ public class ComprasProducto {
 
     ///region Getters y Setters
 
-    public ComprasProductosPK getId() {
+    public ComprasProductoPK getId() {
         return id;
     }
 
-    public void setId(ComprasProductosPK id) {
+    public void setId(ComprasProductoPK id) {
         this.id = id;
     }
 
@@ -60,8 +61,23 @@ public class ComprasProducto {
         this.estado = estado;
     }
 
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+
     ///endregion
-
-
 
 }

@@ -2,6 +2,7 @@ package com.ruth.market.persistence.entity;
 
 import jakarta.persistence.*;
 
+
 @Entity /// la anotación @Entity le da a entender a JAVA que mapea de una tabla.
 @Table (name = "productos") /// la anotación @Table con name la debo poner porque la tabla tiene un nombre distinto
 public class Producto {
@@ -101,6 +102,7 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
 
     ///endregion
 

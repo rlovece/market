@@ -3,13 +3,11 @@ package com.ruth.market.web.controller;
 import com.ruth.market.domain.Product;
 import com.ruth.market.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")

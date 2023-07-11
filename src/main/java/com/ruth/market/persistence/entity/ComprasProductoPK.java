@@ -5,8 +5,9 @@ import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 
+
 @Embeddable ///porque la vamos a embever en ComprasProducto
-public class ComprasProductosPK implements Serializable {
+public class ComprasProductoPK implements Serializable {
 
     @Column (name = "id_compra")
     private Integer idCompra;
@@ -31,6 +32,6 @@ public class ComprasProductosPK implements Serializable {
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
-
     ///endregion
 }
+

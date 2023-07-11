@@ -6,11 +6,11 @@ import com.ruth.market.persistence.crud.ProductoCrudRepository;
 import com.ruth.market.persistence.entity.Producto;
 import com.ruth.market.persistence.entity.mapper.ProdutMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @Repository /// para indicarle a Spring que está clase se encarga del manejo de la base de datos.
               /// tb podría usar @Component para indicar que es un componente , pero @Repository es más especifico

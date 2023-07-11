@@ -1,7 +1,6 @@
 package com.ruth.market.persistence.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
 
